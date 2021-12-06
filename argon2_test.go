@@ -36,7 +36,7 @@ func TestArgon2(t *testing.T) {
 		When mode is Argon2i.
 		Then success create hash and no error.
 	`, func(t *testing.T) {
-		hash, err := Default().SetMode(Mode[Argon2i]).CreateHash("foo")
+		hash, err := NewDefault().SetMode(Mode[Argon2i]).CreateHash("foo")
 		assert.NoError(t, err)
 		assert.IsType(t, []byte{}, hash)
 
@@ -53,7 +53,7 @@ func TestArgon2(t *testing.T) {
 		When encode But salt is nil.
 		Then error salt not found.
 	`, func(t *testing.T) {
-		c := Default()
+		c := NewDefault()
 		_, err := c.encode()
 		assert.Error(t, err)
 		assert.Equal(t, ErrSaltNotFound, err)
@@ -64,7 +64,7 @@ func TestArgon2(t *testing.T) {
 		When encode But key is nil.
 		Then error key not found.
 	`, func(t *testing.T) {
-		c := Default()
+		c := NewDefault()
 		var err error
 		c.Salt, err = c.generateSalt()
 		assert.NoError(t, err)
@@ -150,7 +150,7 @@ func TestArgon2(t *testing.T) {
 		When trying match password.
 		Then error invalid argin config.
 	`, func(t *testing.T) {
-		c := Default()
+		c := NewDefault()
 		match, err := c.Match("bar")
 		assert.Error(t, err)
 		assert.Equal(t, ErrInvalidArgonConfig, err)
@@ -163,7 +163,7 @@ func TestArgon2(t *testing.T) {
 			But match bar.
 		Then match is false and no error.
 	`, func(t *testing.T) {
-		hash, err := Default().SetMode(Mode[Argon2id]).CreateHash("foo")
+		hash, err := NewDefault().SetMode(Mode[Argon2id]).CreateHash("foo")
 		assert.NoError(t, err)
 		assert.IsType(t, []byte{}, hash)
 
@@ -181,7 +181,7 @@ func TestArgon2(t *testing.T) {
 			And success match bar.
 		Then match is false and no error.
 	`, func(t *testing.T) {
-		hash, err := Default().SetMode(Mode[Argon2id]).CreateHash("bar")
+		hash, err := NewDefault().SetMode(Mode[Argon2id]).CreateHash("bar")
 		assert.NoError(t, err)
 		assert.IsType(t, []byte{}, hash)
 

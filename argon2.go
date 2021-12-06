@@ -51,7 +51,7 @@ type Config struct {
 	Key         []byte
 }
 
-func Default() *Config {
+func NewDefault() *Config {
 	return &Config{
 		Time:        1,
 		Memory:      64 * 1024,

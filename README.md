@@ -1,4 +1,4 @@
-# Argon 2
+# Argon2
 This is simple pure Golang implementation for password hash using Argon2.
 
 ## Usage
@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	hash, err := argon2.Default().CreateHash("foo")
+	hash, err := argon2.NewDefault().CreateHash("foo")
 	if err != nil {
 		panic(err)
 	}

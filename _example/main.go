@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	hash, err := argon2.Default().CreateHash("foo")
+	hash, err := argon2.NewDefault().CreateHash("foo")
 	if err != nil {
 		panic(err)
 	}
