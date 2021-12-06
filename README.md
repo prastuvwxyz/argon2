@@ -1,4 +1,6 @@
 # Argon2
+[![CircleCI](https://img.shields.io/circleci/build/github/prastuvwxyz/argon2)](https://circleci.com/gh/prastuvwxyz/argon2/tree/master)
+
 This is simple pure Golang implementation for password hash using Argon2.
 
 ## Usage
